@@ -3,6 +3,10 @@ from sklearn.metrics import silhouette_score, silhouette_samples
 from sklearn.cluster import KMeans
 from wordcloud import WordCloud, STOPWORDS
 
+'''
+Author : Wen-Han Hu
+'''
+
 # cluster_num = -1 for default searching best number of cluster, otherwise, input the expected cluster number
 def kmeans(matrix , uplimit = 15, cluster_num = None, score = None ):    
     if (cluster_num != None and score == None) or (cluster_num == None and score != None):    

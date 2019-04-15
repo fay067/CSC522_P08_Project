@@ -3,14 +3,18 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 from wordcloud import WordCloud, STOPWORDS
+from collections import defaultdict
 from nltk import *
 from data import load_data
 
 # please uncomment this if there is no stopword list
 #nltk.download('stopwords')
 
-def tf_idf():
-	df = load_data()
+'''
+Author : Ge Gao, Wen-Han Hu
+'''
+
+def tf_idf(df):
 	corpus = df['Description'].unique()
 	v = TfidfVectorizer(stop_words='english')
 	matrix = v.fit_transform(corpus)
@@ -34,12 +38,26 @@ def tf_idf():
 	        j+=1
 	        if j == len(threshold): break
 	    tfidf_df.loc[i, label_col[j-1]] = 1
-	return tfidf_df    
+	return tfidf_df.values    
 
 def norm(df):
 	return ((df-df.min())/(df.max()-df.min()))
 
+def write_back(df,clusters):
+	d_list = df['Description'].unique().tolist()
+	prod_cluster = defaultdict(list)
+	for i in range(len(clusters)):
+		cluster_num = clusters[i]
+		prod_cluster[cluster_num].append(d_list[i])
+	prod_cluster_inv = {}
+	for k,v in prod_cluster.items():
+		for i in v:
+			prod_cluster_inv[i] = k
+
+	df["ProdCate"] = df["Description"].map(prod_cluster_inv.get)
+	return df
 
 if __name__ == "__main__":
-	df = tf_idf()
-	print ("DateFrame Shape:",df.shape)
+	df = load_data()
+	tfidf_df = tf_idf(df) 
+	print ("DateFrame tf-idf:",tfidf_df.head(30))

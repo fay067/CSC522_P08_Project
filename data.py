@@ -2,6 +2,11 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+'''
+Author : Wen-Han Hu
+'''
+
+
 def load_data():
 	df = pd.read_excel('./data/Online Retail.xlsx')
 	df = df.drop_duplicates()
