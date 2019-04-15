@@ -59,5 +59,5 @@ def write_back(df,clusters):
 
 if __name__ == "__main__":
 	df = load_data()
-	tfidf_df = tf_idf(df) 
-	print ("DateFrame tf-idf:",tfidf_df.head(30))
+	matrix = tf_idf(df) 
+	print ("tf-idf matrix:",matrix.shape)
