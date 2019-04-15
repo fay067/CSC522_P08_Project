@@ -36,7 +36,7 @@ def rfm(df,prod_type=None):
     customers_rfm = pd.merge(customers_rfm,customer_spent,on='CustomerID')
     return customers_rfm
 
-if __name__ == "main":
+if __name__ == "__main__":
     df = load_data()
     rfm_df = rfm(df)
     print (rfm_df.head(10))
