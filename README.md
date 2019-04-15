@@ -15,7 +15,7 @@ To run the tf-idf alogithm, the file will return matrix:
 python3 tf_idf.py
 ```
 
-How to use kmeans function? If only input matrix, do the number of cluster analysis
+How to use kmeans function? If only input matrix, do the best number of cluster analysis
 ```python
 kmeans(matrix)
 ```
