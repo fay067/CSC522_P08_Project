@@ -23,3 +23,12 @@ To gain the specific number of cluster result, input the matrix and both cluster
 ```python
 kmeans(matrix, cluster_num = 6, score = sscore[6])
 ```
+
+To generate RFM model dataframe, simply call rfm function. The default will generate stock id rfm model. The exmaple can refer to the utilization in jupyter notebook (ipynb).
+```python
+rfm(df) 
+```
+For the TF-IDF RFM model, input any random integer on second position. Please make sure the dataframe contain the cluster number, or the function will return defaulted RFM model
+```python
+rfm(df,1) 
+```
