@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from data import *
+from tf_idf import *
 
 '''
 Author : Chu-Wen Chen, Ge Gao, Pei Liu, Wen-Han Hu
@@ -35,6 +36,20 @@ def rfm(df,prod_type=None):
     customer_spent = customer_spent.groupby('CustomerID',as_index=False).sum()
     customers_rfm = pd.merge(customers_rfm,customer_spent,on='CustomerID')
     return customers_rfm
+
+def rfm_matrix(df):
+    df = df.drop(['Amount'], axis=1)
+    matrix = norm(df.iloc[:,1:]).values
+    return matrix
+
+def rfm_write_back(df,clusters):
+
+    if len(df) != len(clusters):
+        raise ValueError("Please input RFM model dataframe")
+
+    df['Group'] = clusters
+    return df
+
 
 if __name__ == "__main__":
     df = load_data()

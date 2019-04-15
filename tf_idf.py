@@ -43,7 +43,7 @@ def tf_idf(df):
 def norm(df):
 	return ((df-df.min())/(df.max()-df.min()))
 
-def write_back(df,clusters):
+def tf_idf_write_back(df,clusters):
 	d_list = df['Description'].unique().tolist()
 	prod_cluster = defaultdict(list)
 	for i in range(len(clusters)):
