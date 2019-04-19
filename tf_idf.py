@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from wordcloud import WordCloud, STOPWORDS
 from collections import defaultdict
 from nltk import *
+nltk.download('stopwords')
 from data import load_data
 
 # please uncomment this if there is no stopword list
