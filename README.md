@@ -3,10 +3,10 @@
 This project construct under python3 environment and some of graph analysis run on the jupyter notebook. To set up the enviornment please follow the steps.
 
 # Install Pyhton3 environment and jupyter notebook
-First, install python3 environment and jupyter notebook. It can be used either homebrew or anaconda.
+First, install python3 environment and jupyter notebook. It can be used either homebrew or anaconda(https://docs.anaconda.com/anaconda/install/).
 To download anaconda:
 ``` 
-https://docs.anaconda.com/anaconda/install/
+
 ```
 
 If you os is Linux/ Macos, can choose homebrew to install the necessary materials.
