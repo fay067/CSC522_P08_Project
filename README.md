@@ -2,10 +2,10 @@
 
 This project construct under python3 environment and some of graph analysis run on the jupyter notebook. To set up the enviornment please follow the steps.
 
-# Install Pyhton3 environment and jupyter notebook
+## Install Pyhton3 environment and jupyter notebook
 First, install python3 environment and jupyter notebook. It can be used either [homebrew](https://brew.sh/) or [anaconda](https://docs.anaconda.com/anaconda/install/).
 
-If you os is Linux/ Macos, can choose homebrew to install the necessary materials.
+If you are using OS such as Linux/MacOS, choose homebrew to install the necessary materials.
 To download homebrew:
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -32,12 +32,18 @@ Start juypter notebook, simply type on the terminal. It should pop up on your br
 ```
 juypter notebook
 ```
-# Install the required package
+## Install the required package
 To install the required package of this project and make sure the version matching, please type this commend on the terminal.
 ```
 pip3 install -r requirement
 ```
+## Run the main.py file
+To gain the final result of clustering, type this commend on the terminal. It will take a while.
+```
+pip3 main.py
+```
 
+## Run the module python files
 To import data after processing as module:
 ```python
 from data import load_data
