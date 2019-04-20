@@ -6,6 +6,10 @@ from data import *
 from rfm import *
 from evaluation import get_score
 
+'''
+Author : Wen-Han Hu
+'''
+
 # load the data after preprocessing
 df = load_data()
 
