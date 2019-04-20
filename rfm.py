@@ -50,10 +50,11 @@ def rfm_matrix(df,model_type=None):
         matrix = norm(df.iloc[:,1:]).values
     else:
         matrix = norm(df.iloc[:,1:]).values
+    return matrix
 
 def rfm_transform(df):
     #Rank by New-RFM-F
-    rows = int(len(df)/5)
+    rows = len(df)
     for col_name in df.columns:
         df = df.sort_values(by=col_name, ascending=False)
         for i in range(1,6):
