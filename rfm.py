@@ -7,7 +7,7 @@ from tf_idf import *
 Author : Chu-Wen Chen, Ge Gao, Pei Liu, Wen-Han Hu
 '''
 
-def rfm(df,model_type=None):
+def rfm(df,prod_type=None):
     temp = df.copy()
     customers_rfm = pd.DataFrame()
     customers_rfm['CustomerID'] = temp['CustomerID'].unique()
@@ -17,6 +17,7 @@ def rfm(df,model_type=None):
     
     if ("ProdCate" in temp.columns) and (model_type == 'TF-IDF'):
         col = "ProdCate"
+        temp[col] = temp[col] + 1
     elif model_type == 'StockID':
         col = "StockHead"   
     else:
@@ -49,7 +50,6 @@ def rfm_matrix(df,model_type=None):
         matrix = norm(df.iloc[:,1:]).values
     else:
         matrix = norm(df.iloc[:,1:]).values
-    return matrix
 
 def rfm_write_back(df,clusters):
 
