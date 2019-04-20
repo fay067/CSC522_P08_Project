@@ -1,3 +1,4 @@
 /.ipynb_checkpoints
 /__pycache__
 module_test.ipynb
+.DS_Store
