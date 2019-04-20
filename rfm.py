@@ -7,6 +7,7 @@ from tf_idf import *
 Author : Chu-Wen Chen, Ge Gao, Pei Liu, Wen-Han Hu
 '''
 
+
 def rfm(df,prod_type=None):
     temp = df.copy()
     customers_rfm = pd.DataFrame()
@@ -17,6 +18,7 @@ def rfm(df,prod_type=None):
     
     if ("ProdCate" in temp.columns) and prod_type:
         col = "ProdCate"
+        temp[col] = temp[col] + 1
     else:
         col = "StockHead"
         
@@ -37,10 +39,12 @@ def rfm(df,prod_type=None):
     customers_rfm = pd.merge(customers_rfm,customer_spent,on='CustomerID')
     return customers_rfm
 
+
 def rfm_matrix(df):
     df = df.drop(['Amount'], axis=1)
     matrix = norm(df.iloc[:,1:]).values
     return matrix
+
 
 def rfm_write_back(df,clusters):
 

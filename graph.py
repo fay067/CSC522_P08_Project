@@ -27,7 +27,7 @@ def df_for_chart(df, n_product_cate):
         ori_customer_rfm.groupby("Cluster")["Frequency"].median().to_dict().get)
     customer_cluster['Median $ per Visit'] = customer_cluster["Cluster"].map(
        ori_customer_rfm.groupby("Cluster")["Amount per Visit"].median().to_dict().get)
-    for i in range(n_product_cate):
+    for i in range(1, n_product_cate+1):
         col1 = 'cate_{}'.format(i)
         customer_cluster[col1] = customer_cluster["Cluster"].map(
             ori_customer_rfm.groupby("Cluster")[col1].sum().to_dict().get) / customer_cluster['Sum $'] * 100
@@ -93,11 +93,11 @@ class RadarChart:
 def radar_chart(df, n_clusters, n_attributes):
     fig = plt.figure(figsize=(10, 12))
     attributes = []
-    for i in range(n_attributes):
+    for i in range(1, n_attributes+1):
         col = 'cate_{}'.format(i)
         attributes.append(col)
     ranges = [[0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30],
-              [0.01, 30], [0.01, 30]]
+              [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30]]
     index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     n_groups = n_clusters
     i_cols = 3
@@ -126,7 +126,7 @@ def pie_chart(df, cluster_n, attribute_n):
     amount_max = df[df["Cluster"] == cluster_n][col].max()
     amount_min = df[df["Cluster"] == cluster_n][col].min()
     unit = (amount_max - amount_min) / 28
-    current_threshold = 0
+    current_threshold = 0.0
     # price_range = [0, 50, 100, 200, 500, 1000, 5000, 50000]
     price_range = []
     for i in range(8):
@@ -144,7 +144,7 @@ def pie_chart(df, cluster_n, attribute_n):
     plt.rc('font', weight='bold')
     f, ax = plt.subplots(figsize=(11, 6))
     colors = ['yellowgreen', 'gold', 'wheat', 'c', 'violet', 'royalblue', 'firebrick']
-    labels = ['{}<.<{}'.format(price_range[i - 1], s) for i, s in enumerate(price_range) if i != 0]
+    labels = ['{:.2f}<.<{:.2f}'.format(price_range[i - 1], s) for i, s in enumerate(price_range) if i != 0]
     sizes = count_price
     explode = [0.0 if sizes[i] < 100 else 0.0 for i in range(len(sizes))]
     ax.pie(sizes, explode=explode, labels=labels, colors=colors,
