@@ -7,7 +7,7 @@ from tf_idf import *
 Author : Chu-Wen Chen, Ge Gao, Pei Liu, Wen-Han Hu
 '''
 
-def rfm(df,prod_type=None):
+def rfm(df,model_type=None):
     temp = df.copy()
     customers_rfm = pd.DataFrame()
     customers_rfm['CustomerID'] = temp['CustomerID'].unique()
@@ -50,6 +50,18 @@ def rfm_matrix(df,model_type=None):
         matrix = norm(df.iloc[:,1:]).values
     else:
         matrix = norm(df.iloc[:,1:]).values
+
+def rfm_transform(df):
+    #Rank by New-RFM-F
+    rows = int(len(df)/5)
+    for col_name in df.columns:
+        df = df.sort_values(by=col_name, ascending=False)
+        for i in range(1,6):
+            for j in range(rows*(i-1), rows*i, 1):
+                df[col_name].iloc[j] = 6-i
+            for k in range(rows*5, len(df), 1):
+                df[col_name].iloc[k] = 1
+    return df
 
 def rfm_write_back(df,clusters):
 
