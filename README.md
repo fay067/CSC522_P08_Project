@@ -35,7 +35,7 @@ juypter notebook
 ## Install the required package
 To install the required package of this project and make sure the version matching, please type this commend on the terminal.
 ```
-pip3 install -r requirement
+pip3 install -r requirement.txt
 ```
 ## Run the main.py file
 To gain the final result of clustering, type this commend on the terminal. It will take a while.
