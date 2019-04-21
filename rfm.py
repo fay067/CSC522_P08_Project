@@ -72,8 +72,7 @@ def rfm_write_back(df,clusters):
 
     if len(df) != len(clusters):
         raise ValueError("Please input RFM model dataframe")
-
-    df['Group'] = clusters
+    df['Cluster'] = clusters
     return df
 
 
