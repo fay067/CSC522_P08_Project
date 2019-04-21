@@ -63,16 +63,16 @@ How to use kmeans function? If only input matrix, do the best number of cluster 
 ```python3
 kmeans(matrix)
 ```
-To gain the specific number of cluster result, input the matrix and both cluster number and silhouette_score. The example for number of cluster is 6 as below:
+To gain the specific number of cluster result, input the matrix and expected cluster number. The example for number of cluster is 6 as below:
 ```python3
-kmeans(matrix, cluster_num = 6, score = sscore[6])
+kmeans(matrix, cluster_num = 6)
 ```
 
 To generate RFM model dataframe, simply call rfm function. The default will generate stock id rfm model. The exmaple can refer to the utilization in jupyter notebook (ipynb).
 ```python3
 rfm(df) 
 ```
-For the TF-IDF RFM model, input any random integer on second position. Please make sure the dataframe contain the cluster number, or the function will return defaulted RFM model
+For the TF-IDF/StockID RFM model, input model name on second position. Please make sure the dataframe contain the cluster number, or the function will return defaulted RFM model
 ```python3
-rfm(df,1) 
+rfm(df,model_type='StockID') 
 ```
