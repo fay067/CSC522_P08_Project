@@ -8,24 +8,21 @@ Author : Wen-Han Hu
 '''
 
 # cluster_num = -1 for default searching best number of cluster, otherwise, input the expected cluster number
-def kmeans(matrix , uplimit = 15, cluster_num = None, score = None ):    
-    if (cluster_num != None and score == None) or (cluster_num == None and score != None):    
-        raise ValueError("Check both cluster_num and score if input correctly ") 
+def kmeans(matrix , uplimit = 15, cluster_num = None):    
     sse=[]
     sscore={}
     test_range = range(2,uplimit)
     if cluster_num != None:
-        silhouette_avg = -1
-        while silhouette_avg < score*0.99:
-            kmeans = KMeans(init='k-means++', n_clusters = cluster_num, n_init=30)
-            kmeans.fit(matrix)
-            clusters = kmeans.predict(matrix)
-            silhouette_avg = silhouette_score(matrix, clusters)
+        #silhouette_avg = -1
+        kmeans = KMeans(init='k-means++', n_clusters = cluster_num, n_init=30, random_state = 1)
+        kmeans.fit(matrix)
+        clusters = kmeans.predict(matrix)
+            #silhouette_avg = silhouette_score(matrix, clusters)
         return clusters
 
     else:
         for n_cluster in test_range:
-            kmeans = KMeans(n_clusters= n_cluster, init='k-means++',n_init=30)
+            kmeans = KMeans(n_clusters= n_cluster, init='k-means++',n_init=30, random_state = 1)
             kmeans.fit(matrix)
             clusters = kmeans.predict(matrix)
             silhouette_avg = silhouette_score(matrix, clusters)
