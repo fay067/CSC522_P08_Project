@@ -53,15 +53,19 @@ def rfm_matrix(df,model_type=None):
     return matrix
 
 def rfm_transform(df):
-    #Rank by New-RFM-F
     rows = len(df)
-    for col_name in df.columns:
-        df = df.sort_values(by=col_name, ascending=False)
+    col_list=df.columns.to_list()
+    col_list.remove('CustomerID')
+    col_index = 1
+    for col_name in col_list:
+        df = df.sort_values(by=col_name, ascending=True)
+        start = 0
         for i in range(1,6):
-            for j in range(rows*(i-1), rows*i, 1):
-                df[col_name].iloc[j] = 6-i
-            for k in range(rows*5, len(df), 1):
-                df[col_name].iloc[k] = 1
+            end = int(rows *0.2*i)
+            df.iloc[start:end, col_index] = i
+            start = end 
+        col_index = col_index + 1
+    
     return df
 
 def rfm_write_back(df,clusters):
