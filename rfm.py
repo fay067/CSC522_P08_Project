@@ -54,7 +54,7 @@ def rfm_matrix(df,model_type=None):
 
 def rfm_transform(df):
     rows = len(df)
-    col_list=df.columns.to_list()
+    col_list=df.columns.tolist()
     col_list.remove('CustomerID')
     col_index = 1
     for col_name in col_list:
