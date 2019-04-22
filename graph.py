@@ -96,11 +96,11 @@ def radar_chart(df, n_clusters, n_attributes):
     for i in range(1, n_attributes+1):
         col = 'cate_{}'.format(i)
         attributes.append(col)
-    ranges = [[0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30],
-              [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30], [0.01, 30]]
+    ranges = [[0.01, 90], [0.01, 90], [0.01, 90], [0.01, 90], [0.01, 90], [0.01, 90], [0.01, 90], [0.01, 90],
+              [0.01, 90], [0.01, 30], [0.01, 90], [0.01, 90], [0.01, 90]]
     index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     n_groups = n_clusters
-    i_cols = 3
+    i_cols = 2
     i_rows = n_groups // i_cols
     size_x, size_y = (1 / i_cols), (1 / i_rows)
 
@@ -151,7 +151,7 @@ def pie_chart(df, cluster_n, attribute_n):
            autopct=lambda x: '{:1.0f}%'.format(x) if x > 1 else '',
            shadow=False, startangle=0)
     ax.axis('equal')
-    f.text(0.5, 1.01, "Customer Cluster 1 Purchase amount division on product category 2", ha='center', fontsize=18)
+    f.text(0.5, 1.01, "Customer Cluster {} Purchase amount division on product category {}".format(cluster_n,attribute_n), ha='center', fontsize=18)
 
 
 if __name__ == "__main__":
