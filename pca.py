@@ -1,10 +1,17 @@
 from sklearn import preprocessing
+import pandas as pd
+import numpy as np
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.cm as cm
 
 '''
-Author: Ge Gao
+Author: Ge Gao, Wen-Han Hu(bugs fixing)
+
 '''
 
-def PCA(train_MRank):
+def pca_test(train_MRank):
     x = train_MRank.values
     min_max_scaler = preprocessing.MinMaxScaler()
     x_scaled = min_max_scaler.fit_transform(x)
@@ -34,9 +41,8 @@ def PCA(train_MRank):
 
     #cumulative new explained variance 
     new_pca = PCA().fit(train_MRank)
-    '''
+    
     plt.plot(np.cumsum(new_pca.explained_variance_ratio_))
     plt.xlabel('New number of components')
     plt.ylabel('New cumulative explained variance')
     plt.show()
-    '''
