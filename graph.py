@@ -100,7 +100,7 @@ def radar_chart(df, n_clusters, n_attributes):
               [0.01, 90], [0.01, 30], [0.01, 90], [0.01, 90], [0.01, 90]]
     index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     n_groups = n_clusters
-    i_cols = 3
+    i_cols = 2
     i_rows = n_groups // i_cols
     size_x, size_y = (1 / i_cols), (1 / i_rows)
 
