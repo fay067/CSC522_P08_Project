@@ -42,37 +42,3 @@ To gain the final result of clustering, type this commend on the terminal. It wi
 ```
 pip3 main.py
 ```
-
-## Run the module python files
-To import data after processing as module:
-```python
-from data import load_data
-df = load_data()
-```
-To take a look of dataframe, run only data.py:
-```
-python3 data.py
-```
-
-To run the tf-idf alogithm, the file will return matrix:
-```
-python3 tf_idf.py
-```
-
-How to use kmeans function? If only input matrix, do the best number of cluster analysis
-```python3
-kmeans(matrix)
-```
-To gain the specific number of cluster result, input the matrix and expected cluster number. The example for number of cluster is 6 as below:
-```python3
-kmeans(matrix, cluster_num = 6)
-```
-
-To generate RFM model dataframe, simply call rfm function. The default will generate stock id rfm model. The exmaple can refer to the utilization in jupyter notebook (ipynb).
-```python3
-rfm(df) 
-```
-For the TF-IDF/StockID RFM model, input model name on second position. Please make sure the dataframe contain the cluster number, or the function will return defaulted RFM model
-```python3
-rfm(df,model_type='StockID') 
-```
