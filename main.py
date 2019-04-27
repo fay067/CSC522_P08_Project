@@ -16,20 +16,19 @@ df = load_data()
 # build typical rfm
 print ("Building typical RFM model")
 typical_rfm = rfm(df)
-typical_rfm = rfm_transform(typical_rfm)
 matrix = rfm_matrix(typical_rfm)
 clusters = kmeans(matrix = matrix, cluster_num = 4)
-typical_rfm = rfm_write_back(typical_rfm,clusters)
+#typical_rfm = rfm_write_back(typical_rfm,clusters)
 result = get_score(matrix,clusters,'Typical RFM')
 
 
 # build stock_id rfm
 print ("Building StockID RFM model")
 stock_rfm = rfm(df,model_type='StockID')
-stock_rfm = rfm_transform(stock_rfm)
+#stock_rfm = rfm_transform(stock_rfm)
 matrix = rfm_matrix(stock_rfm, model_type=1)
 clusters = kmeans(matrix = matrix, cluster_num = 5)
-stock_rfm = rfm_write_back(stock_rfm,clusters)
+#stock_rfm = rfm_write_back(stock_rfm,clusters)
 result = get_score(matrix,clusters,'StockID RFM',result,flag =1)
 
 
@@ -39,10 +38,10 @@ matrix = tf_idf(df)
 clusters = kmeans(matrix = matrix, cluster_num = 6)
 df = tf_idf_write_back(df,clusters)
 tfidf_rfm = rfm(df,model_type='TF-IDF')
-tfidf_rfm  = rfm_transform(tfidf_rfm)
+#tfidf_rfm  = rfm_transform(tfidf_rfm)
 matrix = rfm_matrix(tfidf_rfm , model_type=1)
-clusters = kmeans(matrix = matrix, cluster_num = 4)
-tfidf_rfm  = rfm_write_back(tfidf_rfm ,clusters)
+clusters = kmeans(matrix = matrix, cluster_num = 5)
+#tfidf_rfm  = rfm_write_back(tfidf_rfm ,clusters)
 result = get_score(matrix,clusters,'TF-IDF RFM',result,flag =1)
 
 
